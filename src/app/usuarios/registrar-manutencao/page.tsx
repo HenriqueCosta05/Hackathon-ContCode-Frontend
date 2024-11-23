@@ -12,7 +12,7 @@ export default function ManutencaoForm() {
             </p>
 
             <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
-                
+
                 <InputField
                     type="select"
                     label="Carro associado:"
@@ -21,7 +21,7 @@ export default function ManutencaoForm() {
                     className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                 >
                     <option value="">Serão listados apenas os carros associados ao usuário...</option>
-                    
+
                 </InputField>
 
                 {/* Serviço */}
@@ -31,6 +31,15 @@ export default function ManutencaoForm() {
                     placeholder="Descreva, em detalhes, o serviço realizado no carro..."
                     required={true}
                     name="servico"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                />
+
+                <InputField
+                    type="text"
+                    label="Quilometragem:"
+                    placeholder="Digite a quilometragem aproximada do carro..."
+                    required={true}
+                    name="quilometragem"
                     className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                 />
 
