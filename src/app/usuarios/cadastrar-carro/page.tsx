@@ -40,11 +40,11 @@ const Register: React.FC = () => {
 
     return (
         <main className="flex flex-col w-full h-screen justify-center items-center">
-            <h1 className="text-4xl font-bold">Cadastrar veículo</h1>
-            <p className="pt-2 text-center">
+            <h1 className="text-4xl font-bold text-center">Cadastrar veículo</h1>
+            <p className="pt-2 text-center lg:w-10/12">
                 Preencha o formulário para cadastro do seu veículo, identificando-o pela placa. Caso já haja cadastro associado à placa, redirecionaremos ao seu histórico correspondente.
             </p>
-            <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
+            <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-3 w-10/12 rounded-md my-4 lg:w-6/12">
                 {/* Etapa 1: Verificação de placa */}
                 {currentStep === 1 && (
                     <InputField
@@ -55,6 +55,7 @@ const Register: React.FC = () => {
                         value={formData.placa}
                         onChange={handleInputChange}
                         name="placa"
+                        className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                     />
                 )}
 
@@ -69,6 +70,7 @@ const Register: React.FC = () => {
                             value={formData.marca}
                             onChange={handleInputChange}
                             name="marca"
+                            className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                         <InputField
                             type="text"
@@ -78,6 +80,7 @@ const Register: React.FC = () => {
                             value={formData.modelo}
                             onChange={handleInputChange}
                             name="modelo"
+                            className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                         <InputField
                             type="string"
@@ -87,6 +90,7 @@ const Register: React.FC = () => {
                             value={formData.ano}
                             onChange={handleInputChange}
                             name="ano"
+                            className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                     </>
                 )}

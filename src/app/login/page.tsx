@@ -30,13 +30,13 @@ const Register: React.FC = () => {
         Insira suas credenciais e faça o login para prosseguir.
       </p>
 
-      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
+      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12">
         
         <InputField
           type="email"
           label="Endereço de e-mail:"
           placeholder="Digite o seu e-mail..."
-          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.email}
           onChange={handleInputChange}
@@ -47,7 +47,7 @@ const Register: React.FC = () => {
           type="password"
           label="Senha:"
           placeholder="Digite sua senha..."
-          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.password}
           onChange={handleInputChange}

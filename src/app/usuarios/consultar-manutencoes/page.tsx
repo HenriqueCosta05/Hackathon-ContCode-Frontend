@@ -1,3 +1,5 @@
+'use client'
+
 import { CardComponent } from '@/components';
 import { API_URL } from '@/constants';
 import { useFetch } from '@/hooks';

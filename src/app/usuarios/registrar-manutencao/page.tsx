@@ -5,20 +5,20 @@ import Button from "@/components/form/button";
 
 export default function ManutencaoForm() {
     return (
-        <main className="flex flex-col w-full min-h-screen justify-center my-8 items-center">
-            <h1 className="text-4xl font-bold">Registrar manutenção</h1>
+        <main className="flex flex-col w-full min-h-screen justify-center my-0 items-center">
+            <h1 className="text-4xl font-bold text-center">Registrar manutenção</h1>
             <p className="pt-2 text-center">
                 Preencha o formulário para associar uma nova manutenção ao seu carro.
             </p>
 
-            <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
+            <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-3 w-10/12 rounded-md my-4 lg:w-6/12">
 
                 <InputField
                     type="select"
                     label="Carro associado:"
                     required={true}
                     name="listar_carros"
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-1 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                 >
                     <option value="">Serão listados apenas os carros associados ao usuário...</option>
 
@@ -31,7 +31,7 @@ export default function ManutencaoForm() {
                     placeholder="Descreva, em detalhes, o serviço realizado no carro..."
                     required={true}
                     name="servico"
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                 />
 
                 <InputField
@@ -40,7 +40,7 @@ export default function ManutencaoForm() {
                     placeholder="Digite a quilometragem aproximada do carro..."
                     required={true}
                     name="quilometragem"
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                 />
 
                 <div className="space-y-4 flex w-full flex-wrap">

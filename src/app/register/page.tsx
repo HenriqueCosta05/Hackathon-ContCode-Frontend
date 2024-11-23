@@ -33,12 +33,12 @@ const Register: React.FC = () => {
         impedit atque suscipit sequi sed nemo eaque esse.
       </p>
 
-      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
+      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12">
         <InputField
           type="text"
           label="Nome:"
           placeholder="Digite o seu nome completo..."
-          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.name}
           onChange={handleInputChange}
@@ -49,7 +49,7 @@ const Register: React.FC = () => {
           type="email"
           label="Endereço de e-mail:"
           placeholder="Digite o seu e-mail..."
-          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.email}
           onChange={handleInputChange}

@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
       <h1 className="text-4xl font-bold">ManuCar</h1>
-      <p className="pt-2 text-center">
+      <p className="pt-2 text-center md:w-10/12">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ab
         impedit atque suscipit sequi sed nemo eaque esse.
       </p>
