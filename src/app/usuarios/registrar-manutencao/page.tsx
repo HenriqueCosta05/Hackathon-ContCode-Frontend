@@ -24,7 +24,7 @@ export default function ManutencaoForm() {
 
                 </InputField>
 
-                {/* Serviço */}
+
                 <InputField
                     type="textarea"
                     label="Serviço:"

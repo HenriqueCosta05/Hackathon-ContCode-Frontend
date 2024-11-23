@@ -2,10 +2,10 @@ import Link from 'next/link';
 import React from 'react';
 
 interface CardProps {
-    title: string;
+    title?: string;
     description?: string;
     bullets?: {
-        text: string;
+        text?: string;
     }[];
     action?: {
         text: string;

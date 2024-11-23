@@ -1,21 +1,25 @@
-import { CardComponent } from '@/components'
+import { CardComponent } from '@/components';
 import { API_URL } from '@/constants';
 import { useFetch } from '@/hooks';
 import { Carro } from '@/types/carro';
-import React from 'react'
+import React from 'react';
 
 export default function ListarCarros() {
+    const { data: carros } = useFetch<Carro[]>({ url: API_URL });
 
-    const carros = useFetch<Carro>({ url: API_URL })
     return (
         <main className='flex justify-center items-center flex-wrap gap-4 w-full h-screen'>
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-            <CardComponent title="Fiat Palio" bullets={[{ text: "Ano: 2008" }, { text: "Placa: AAA-1234" }]} action={{ text: "Ver mais", href: "/" }} />
-
+            {carros?.map((carro: Partial<Carro>) => (
+                <CardComponent
+                    key={carro.placa}  
+                    title={carro.placa}
+                    bullets={[
+                        { text: carro.modelo },
+                        { text: carro.marca },
+                        { text: carro.ano?.toString() },
+                    ]}
+                />
+            ))}
         </main>
-    )
+    );
 }
