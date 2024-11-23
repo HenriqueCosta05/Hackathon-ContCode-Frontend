@@ -1,67 +1,127 @@
-'use client'
+"use client"
 
-import Link from "next/link";
+import InputField from "@/components/form/input-field";
+import Button from "@/components/form/button";
+import { useState } from "react";
 
-export default function CarForm() {
 
+interface FormData {
+    placa: string;
+    marca: string;
+    modelo: string;
+    ano: string;
+}
+
+const Register: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
+        placa: "",
+        marca: "",
+        modelo: "",
+        ano: "",
+    });
+
+    const [currentStep, setCurrentStep] = useState<number>(1);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleNextStep = () => {
+        if (currentStep < 2) setCurrentStep(currentStep + 1);
+    };
+
+    const handlePrevStep = () => {
+        if (currentStep > 1) setCurrentStep(currentStep - 1);
+    };
 
     return (
-        <main className="flex flex-col w-full min-h-screen justify-center my-8 items-center">
-            <h1 className="text-4xl font-bold">Cadastrar carro</h1>
+        <main className="flex flex-col w-full h-screen justify-center items-center">
+            <h1 className="text-4xl font-bold">Cadastrar veículo</h1>
             <p className="pt-2 text-center">
-                Preencha o formulário para cadastro do seu carro, identificando-o pela placa. Caso já haja cadastro associado à placa, redirecionaremos ao seu histórico correspondente.
+                Preencha o formulário para cadastro do seu veículo, identificando-o pela placa. Caso já haja cadastro associado à placa, redirecionaremos ao seu histórico correspondente.
             </p>
-
             <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
-                <label className="space-x-3 block">
-                    Modelo:
-                </label>
-                <input
-                    type="text"
-                    placeholder="Digite o modelo do carro..."
-                    required
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
-                />
+                {/* Etapa 1: Verificação de placa */}
+                {currentStep === 1 && (
+                    <InputField
+                        type="text"
+                        label="Placa:"
+                        placeholder="Digite a placa do seu veículo..."
+                        required={true}
+                        value={formData.placa}
+                        onChange={handleInputChange}
+                        name="placa"
+                    />
+                )}
 
-                <label className="space-x-3 block">
-                    Ano:
-                </label>
-                <input
-                    type="text"
-                    placeholder="Digite ano do carro..."
-                    required
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
-                />
-
-                <label className="space-x-3 block">
-                    Marca:
-                </label>
-                <input
-                    type="text"
-                    placeholder="Digite a marca do carro..."
-                    required
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
-                />
-
-                <label className="space-x-3 block">
-                    Placa:
-                </label>
-                <input
-                    type="text"
-                    placeholder="Digite a placa do carro..."
-                    pattern="^[A-Za-z]{3}-[0-9]{4}$|^[A-Za-z]{3}[0-9][A-Za-z0-9][0-9]{2}$"
-                    required
-                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
-                />
+                {/* Etapa 2: Cadastro ou edição dos dados do carro */}
+                {currentStep === 2 && (
+                    <>
+                        <InputField
+                            type="text"
+                            label="Marca:"
+                            placeholder="Digite a marca de seu veículo..."
+                            required={true}
+                            value={formData.marca}
+                            onChange={handleInputChange}
+                            name="email"
+                        />
+                        <InputField
+                            type="text"
+                            label="Modelo:"
+                            placeholder="Digite o modelo de seu veículo..."
+                            required={true}
+                            value={formData.modelo}
+                            onChange={handleInputChange}
+                            name="email"
+                        />
+                        <InputField
+                            type="string"
+                            label="Ano:"
+                            placeholder="Digite o ano de seu veículo..."
+                            required={true}
+                            value={formData.ano}
+                            onChange={handleInputChange}
+                            name="email"
+                        />
+                    </>
+                )}
 
                 <div className="space-y-4 flex w-full flex-wrap">
-                    <Link href="/" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">Salvar carro</Link>
+                    {/* Botões de navegação */}
+                    <div className="flex justify-between w-full gap-4">
+                        {currentStep > 1 && (
+                            <Button
+                                text="Voltar"
+                                href="#"
+                                className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s]"
+                                onClick={handlePrevStep}
+                            />
+                        )}
 
-                    <Link href="/" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">
-                        Voltar
-                    </Link>
+                        {currentStep < 3 ? (
+                            <Button
+                                text="Próximo"
+                                href="#"
+                                className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
+                                onClick={handleNextStep}
+                            />
+                        ) : (
+                            <Button
+                                text="Cadastrar"
+                                href="#"
+                                className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
+                            />
+                        )}
+                    </div>
                 </div>
             </form>
         </main>
     );
-}
+};
+
+export default Register;

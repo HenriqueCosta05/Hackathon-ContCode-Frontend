@@ -1,3 +1,4 @@
+import { CardComponent } from "@/components";
 import Link from "next/link";
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
           </button>
         </Link>
       </div>
+      
     </main>
   );
 }
