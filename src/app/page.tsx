@@ -1,4 +1,3 @@
-import { CardComponent } from "@/components";
 import Link from "next/link";
 
 export default function Page() {
@@ -11,17 +10,15 @@ export default function Page() {
       </p>
 
       <div className="flex space-x-5 pt-10">
-        <Link href="/register">
-          <button className="p-3 w-36 rounded-md cadastrar">Cadastrar</button>
+        <Link href="/register" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] py-3 px-6 rounded-md w-full text-center">
+          Cadastrar
         </Link>
 
-        <Link href="/login">
-          <button className="p-3 w-36 rounded-md login bg-transparent">
-            Entrar
-          </button>
+        <Link href="/login" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-6 rounded-md w-full text-center">
+          Entrar
         </Link>
       </div>
-      
+
     </main>
   );
 }

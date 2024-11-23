@@ -1,10 +1,9 @@
 'use client'
 
-import Link from "next/link";
+import InputField from "@/components/form/input-field";
+import Button from "@/components/form/button";
 
 export default function ManutencaoForm() {
-
-
     return (
         <main className="flex flex-col w-full min-h-screen justify-center my-8 items-center">
             <h1 className="text-4xl font-bold">Registrar manutenção</h1>
@@ -13,23 +12,40 @@ export default function ManutencaoForm() {
             </p>
 
             <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
-                <label className="space-x-3 block">
-                    Carro associado:
-                </label>
-                <select name="listar_carros" id="listar_carros" className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full">
-                    <option>Serão listados apenas os carros associados ao usuário...</option>
-                </select>
-                <label className="space-x-3 block">
-                    Serviço:
-                </label>
-                <textarea className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full" placeholder="Descreva, em detalhes, o serviço realizado no carro..."></textarea>
+                
+                <InputField
+                    type="select"
+                    label="Carro associado:"
+                    required={true}
+                    name="listar_carros"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                >
+                    <option value="">Serão listados apenas os carros associados ao usuário...</option>
+                    
+                </InputField>
+
+                {/* Serviço */}
+                <InputField
+                    type="textarea"
+                    label="Serviço:"
+                    placeholder="Descreva, em detalhes, o serviço realizado no carro..."
+                    required={true}
+                    name="servico"
+                    className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+                />
 
                 <div className="space-y-4 flex w-full flex-wrap">
-                    <Link href="/" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">Registrar manutenção</Link>
+                    <Button
+                        text="Registrar manutenção"
+                        href="#"
+                        className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center"
+                    />
 
-                    <Link href="/" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">
-                        Voltar
-                    </Link>
+                    <Button
+                        text="Voltar"
+                        href="/"
+                        className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center"
+                    />
                 </div>
             </form>
         </main>

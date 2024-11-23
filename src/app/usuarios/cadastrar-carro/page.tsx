@@ -58,7 +58,7 @@ const Register: React.FC = () => {
                     />
                 )}
 
-                {/* Etapa 2: Cadastro ou edição dos dados do carro */}
+                {/* Etapa 2: Cadastro dos dados do carro */}
                 {currentStep === 2 && (
                     <>
                         <InputField
@@ -68,7 +68,7 @@ const Register: React.FC = () => {
                             required={true}
                             value={formData.marca}
                             onChange={handleInputChange}
-                            name="email"
+                            name="marca"
                         />
                         <InputField
                             type="text"
@@ -77,7 +77,7 @@ const Register: React.FC = () => {
                             required={true}
                             value={formData.modelo}
                             onChange={handleInputChange}
-                            name="email"
+                            name="modelo"
                         />
                         <InputField
                             type="string"
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
                             required={true}
                             value={formData.ano}
                             onChange={handleInputChange}
-                            name="email"
+                            name="ano"
                         />
                     </>
                 )}

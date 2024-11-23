@@ -1,15 +1,35 @@
 import React from "react";
+import Link from "next/link";
 
 interface ButtonProps {
     text: string;
-    href: string;
+    href?: string;
+    onClick?: (e: React.MouseEvent) => void;
     className: string;
-    onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, className }) => {
+const Button: React.FC<ButtonProps> = ({ text, href, onClick, className }) => {
+    const handleClick = (e: React.MouseEvent) => {
+        if (onClick) {
+            e.preventDefault();
+            onClick(e);
+        }
+    };
+
+    if (href) {
+        return (
+            <Link href={href} onClick={handleClick} className={`p-3 rounded-md w-full text-center ${className}`}>
+                {text}
+            </Link>
+        );
+    }
+
     return (
-        <button onClick={onClick} className={`p-3 rounded-md w-full text-center ${className}`} type="button">
+        <button
+            type="button"
+            onClick={handleClick}
+            className={`p-3 rounded-md w-full text-center ${className}`}
+        >
             {text}
         </button>
     );

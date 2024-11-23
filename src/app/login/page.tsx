@@ -1,44 +1,74 @@
-import Link from "next/link";
+"use client"
 
-export default function Login() {
+import { useState } from "react";
+import InputField from "@/components/form/input-field"
+import Button from "@/components/form/button";
+
+interface FormData {
+  email: string;
+  password: string;
+}
+
+const Register: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
       <h1 className="text-4xl font-bold">Entrar</h1>
       <p className="pt-2 text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ab
-        impedit atque suscipit sequi sed nemo eaque esse.{" "}
+        Insira suas credenciais e faça o login para prosseguir.
       </p>
 
-     <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
-        <label className="space-x-3 block">
-          E-mail:
-        </label>
-        <input
-            type="email"
-            placeholder="Digite o seu e-mail..."
-            required
-            className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full" 
-          />
+      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-16 w-5/12 rounded-md my-4">
+        
+        <InputField
+          type="email"
+          label="Endereço de e-mail:"
+          placeholder="Digite o seu e-mail..."
+          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          required={true}
+          value={formData.email}
+          onChange={handleInputChange}
+          name="email"
+        />
 
-      <label className="space-x-3 block">
-          Digite sua senha:
-        </label>
-        <input
-            type="password"
-            placeholder="Digite sua senha..."
-            required
-            className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full" 
-              />
-              
-              <div className="space-y-4 flex w-full flex-wrap">
-               <Link href="/" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">Entrar</Link>
-              
-              <Link href="/" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] p-3 rounded-md w-full text-center">
-                  Voltar
-            </Link>   
-              </div>
-              
+        <InputField
+          type="password"
+          label="Senha:"
+          placeholder="Digite sua senha..."
+          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
+          required={true}
+          value={formData.password}
+          onChange={handleInputChange}
+          name="password"
+        />
+
+        <div className="space-y-4 flex w-full flex-wrap">
+          <Button
+            text="Cadastrar"
+            href="/"
+            className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
+          />
+          <Button
+            text="Voltar ao início"
+            href="/"
+            className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s]"
+          />
+        </div>
       </form>
     </main>
   );
-}
+};
+
+export default Register;

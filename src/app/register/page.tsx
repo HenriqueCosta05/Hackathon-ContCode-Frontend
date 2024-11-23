@@ -17,7 +17,7 @@ const Register: React.FC = () => {
     password: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -38,6 +38,7 @@ const Register: React.FC = () => {
           type="text"
           label="Nome:"
           placeholder="Digite o seu nome completo..."
+          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.name}
           onChange={handleInputChange}
@@ -48,6 +49,7 @@ const Register: React.FC = () => {
           type="email"
           label="Endereço de e-mail:"
           placeholder="Digite o seu e-mail..."
+          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.email}
           onChange={handleInputChange}
@@ -58,6 +60,7 @@ const Register: React.FC = () => {
           type="password"
           label="Digite uma senha:"
           placeholder="Digite sua senha..."
+          className="bg-transparent rounded-md placeholder-black py-3 px-6 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
           required={true}
           value={formData.password}
           onChange={handleInputChange}
@@ -71,7 +74,7 @@ const Register: React.FC = () => {
             className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
           />
           <Button
-            text="Voltar"
+            text="Voltar ao início"
             href="/"
             className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s]"
           />
