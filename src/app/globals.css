@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        background-color: #FFE6A7;
+        color: #432818;
+    }
+
+    .cadastrar {
+        background-color: #432818;
+        color: #FFE6A7;
+    }
+    .cadastrar:hover {
+        transform: scale(1.05);
+        transition: .3s;
+    }
+
+    .login {
+        border: 1px solid #432818;
+    }
+    .login:hover {
+        transform: scale(1.05);
+        transition: .3s;
+    }
+
+    .inputform {
+        border: 1px solid #432818;
+        color: #432818;
+    }
+}
