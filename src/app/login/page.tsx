@@ -31,7 +31,7 @@ const Register: React.FC = () => {
       </p>
 
       <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12">
-        
+
         <InputField
           type="email"
           label="Endereço de e-mail:"

@@ -15,7 +15,7 @@ export default function ConsultarManutencoes() {
             {manutencoes?.map((manutencao: Partial<Manutencao>) => {
                 return (
                     <CardComponent
-                        key={manutencao.id} 
+                        key={manutencao.id}
                         title={manutencao.date}
                         description={manutencao.descricao}
                     />

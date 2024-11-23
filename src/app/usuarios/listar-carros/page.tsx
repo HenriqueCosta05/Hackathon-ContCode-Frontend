@@ -13,7 +13,7 @@ export default function ListarCarros() {
         <main className='flex justify-center items-center flex-wrap gap-4 w-full h-screen'>
             {carros?.map((carro: Partial<Carro>) => (
                 <CardComponent
-                    key={carro.placa}  
+                    key={carro.placa}
                     title={carro.placa}
                     bullets={[
                         { text: carro.modelo },
