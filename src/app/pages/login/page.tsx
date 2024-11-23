@@ -1,23 +1,15 @@
-export default function Register() {
+import Link from "next/link";
+
+export default function Login() {
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
-      <h1 className="text-4xl font-bold">Cadastre-se</h1>
+      <h1 className="text-4xl font-bold">Entrar</h1>
       <p className="pt-2 text-center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ab
-        impedit atque suscipit sequi sed nemo eaque esse.
+        impedit atque suscipit sequi sed nemo eaque esse.{" "}
       </p>
 
       <form className="flex flex-col space-y-5 pt-5 items-center">
-        <label className="space-x-3">
-          <span>Nome:</span>
-          <input
-            type="email"
-            placeholder="Digite o seu nome"
-            required
-            className="py-1 px-3 bg-transparent rounded-md placeholder-black w-64 inputform"
-          />
-        </label>
-
         <label className="space-x-3">
           <span>Email:</span>
           <input
@@ -38,7 +30,11 @@ export default function Register() {
           />
         </label>
 
-        <button className="cadastrar p-3 w-36 rounded-md">Cadastrar</button>
+        <button className="login p-3 w-36 rounded-md ">Entrar</button>
+
+        <Link href="/">
+          <button className="cadastrar p-3 w-36 rounded-md ">Voltar</button>
+        </Link>
       </form>
     </main>
   );

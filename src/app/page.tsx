@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Page() {
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
@@ -8,11 +10,15 @@ export default function Page() {
       </p>
 
       <div className="flex space-x-5 pt-10">
-        <button className="p-3 w-36 rounded-md cadastrar">Cadastrar</button>
+        <Link href="/pages/register">
+          <button className="p-3 w-36 rounded-md cadastrar">Cadastrar</button>
+        </Link>
 
-        <button className="p-3 w-36 rounded-md login bg-transparent">
-          Entrar
-        </button>
+        <Link href="/pages/login">
+          <button className="p-3 w-36 rounded-md login bg-transparent">
+            Entrar
+          </button>
+        </Link>
       </div>
     </main>
   );
