@@ -10,11 +10,11 @@ export default function Page() {
       </p>
 
       <div className="flex space-x-5 pt-10">
-        <Link href="/pages/register">
+        <Link href="/register">
           <button className="p-3 w-36 rounded-md cadastrar">Cadastrar</button>
         </Link>
 
-        <Link href="/pages/login">
+        <Link href="/login">
           <button className="p-3 w-36 rounded-md login bg-transparent">
             Entrar
           </button>
