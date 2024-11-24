@@ -4,10 +4,9 @@ import Link from "next/link";
 export default function Page() {
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
-      <h1 className="text-4xl font-bold">ManuCar</h1>
+      <h1 className="text-4xl font-bold pb-3">ManuCar</h1>
       <p className="pt-2 text-left mx-auto md:w-10/12">
         ManuCar é uma plataforma inovadora que:
-        <br />
         <br />
         <br />
 
@@ -21,22 +20,23 @@ export default function Page() {
       </p>
 
       <div className="flex space-x-5 pt-10">
-        <Link href="/register" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] py-3 px-6 rounded-md w-full text-center">
-          Cadastrar
+        <Link href="/usuarios/cadastrar-carro" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] py-6 px-6 rounded-md w-full text-center">
+          Cadastrar Veículo
         </Link>
 
-        <Link href="/login" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-6 rounded-md w-full text-center">
-          Entrar
+        <Link href="/usuarios/registrar-manutencao" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-6 rounded-md w-full text-center">
+          Registrar Manutenção
         </Link>
       </div>
       <div className="flex space-x-5 pt-10">
+        <Link href="/usuarios/listar-carros" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-8 m-auto rounded-md w-full text-center">
+          Carros
+        </Link>
+        
         <Link href="/usuarios/consultar-manutencoes" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] py-3 px-8 rounded-md w-full text-center">
           Manutenções
         </Link>
 
-        <Link href="/usuarios/listar-carros" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-8 m-auto rounded-md w-full text-center">
-          Carros
-        </Link>
       </div>
     </main>
   );

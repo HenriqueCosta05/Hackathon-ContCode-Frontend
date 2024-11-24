@@ -6,6 +6,7 @@ import Button from "@/components/form/button";
 import { toast, ToastContainer } from "react-toastify";
 import { API_URL } from "@/constants";
 import { useFetch } from "@/hooks";
+import Link from "next/link";
 
 interface FormData {
   email: string;
@@ -44,7 +45,7 @@ const Register: React.FC = () => {
 
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
-      <h1 className="text-4xl font-bold">Entrar</h1>
+      
       <p className="pt-2 text-center">
         Insira suas credenciais e faça o login para prosseguir.
       </p>

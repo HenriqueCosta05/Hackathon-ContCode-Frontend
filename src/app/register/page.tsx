@@ -32,16 +32,16 @@ const Register: React.FC = () => {
     }));
   };
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await create(formData);
-      toast.success("Usuário cadastrado com sucesso!");
-      setFormData({ name: "", email: "", password: "" });
-    } catch (error) {
-      toast.error("Erro ao cadastrar usuário! Tente novamente com outro e-mail.");
-    }
-  };
+  // const handleRegister = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await create(formData);
+  //     toast.success("Usuário cadastrado com sucesso!");
+  //     setFormData({ name: "", email: "", password: "" });
+  //   } catch (error) {
+  //     toast.error("Erro ao cadastrar usuário! Tente novamente com outro e-mail.");
+  //   }
+  // };
 
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
@@ -51,7 +51,7 @@ const Register: React.FC = () => {
       </p>
 
       <form
-        onSubmit={handleRegister}
+        // onSubmit={handleRegister}
         className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12"
       >
         <InputField
@@ -89,11 +89,11 @@ const Register: React.FC = () => {
 
         <div className="space-y-4 flex w-full flex-wrap">
           <Button
-            type="submit"
-            onClick={handleRegister}
+            // type="submit"
+            // onClick={handleRegister}
             text={loading ? "Cadastrando..." : "Cadastrar"}
             className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
-            disabled={loading}
+            // disabled={loading}
           />
           <Button
             text="Voltar ao início"
