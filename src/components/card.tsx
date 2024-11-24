@@ -16,7 +16,7 @@ interface CardProps {
     description?: string;
 }
 
-export default function Card({ title, date, tag, bullets, action, description}: CardProps) {
+export default function Card({ title, date, tag, bullets, action, description }: CardProps) {
     return (
         <>
             <div className="w-96 border-2 rounded text-l m-8 border-primary">
@@ -39,7 +39,7 @@ export default function Card({ title, date, tag, bullets, action, description}: 
                         </div>
                     ))}
                 </div>
-                <div className='container mx-auto'>
+                <div className='container mx-auto my-4 text-center'>
                     <div className='text-xs font-semibold pl-4'>{description || ''}</div>
                 </div>
 
@@ -47,7 +47,7 @@ export default function Card({ title, date, tag, bullets, action, description}: 
                     <Link href={action.href} className='bg-secondary rounded-md m-auto py-2 px-6 text-white font-semibold'>
                         {action.text}
                     </Link>
-                    </div>
+                </div>
             </div>
         </>
     );

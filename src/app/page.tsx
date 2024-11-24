@@ -5,9 +5,19 @@ export default function Page() {
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
       <h1 className="text-4xl font-bold">ManuCar</h1>
-      <p className="pt-2 text-center md:w-10/12">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ab
-        impedit atque suscipit sequi sed nemo eaque esse.
+      <p className="pt-2 text-left mx-auto md:w-10/12">
+        ManuCar é uma plataforma inovadora que:
+        <br />
+        <br />
+        <br />
+
+        1. Conecta o dono do carro ao seu histórico de consertos ao logo de sua vida útil.
+        <br />
+        2. Oferece uma experiência de conserto seguro, transparente e eficiente.
+        <br />
+        3. Auxilia o usuário a entender melhor o problema a ser resolvido no seu automóvel, conseguindo assim, preços e consertos transparentes.
+        <br />
+        4. Auxilia o usuário a ter uma visibilidade das manutenções que o seu veículo precisa, ajudando-o a se programar para futuros gastos.
       </p>
 
       <div className="flex space-x-5 pt-10">
@@ -19,8 +29,15 @@ export default function Page() {
           Entrar
         </Link>
       </div>
+      <div className="flex space-x-5 pt-10">
+        <Link href="/usuarios/consultar-manutencoes" className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s] py-3 px-8 rounded-md w-full text-center">
+          Manutenções
+        </Link>
 
-      <CardComponent title="Gol" tag="FOU-1927" date={new Date()} action={{ text: "Ver mais", href: "/" }} bullets={[{ key: "Ano", value: "2009" }, { key: "Marca", value: "Fiat" } ]} />
+        <Link href="/usuarios/listar-carros" className="border border-primary text-primary hover:scale-[1.05] hover:transition-[.3s] py-3 px-8 m-auto rounded-md w-full text-center">
+          Carros
+        </Link>
+      </div>
     </main>
   );
 }
