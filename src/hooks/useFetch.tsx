@@ -32,7 +32,6 @@ export function useFetch<T>({ url, headers = {}, page = 0, pageSize = MAX_ITEMS_
                 const params = method === "GET" ? new URLSearchParams({ page: page.toString(), size: pageSize.toString(), ...queryParams }).toString() : undefined;
                 const config: RequestInit = {
                     method,
-                    mode: 'no-cors',
                     headers: {
                         "Content-Type": "application/json",
                         ...headers,
@@ -40,6 +39,7 @@ export function useFetch<T>({ url, headers = {}, page = 0, pageSize = MAX_ITEMS_
                     body: method === "POST" || method === "PUT" ? JSON.stringify(body) : undefined,
                     ...additionalConfig,
                 };
+
 
                 const response = await fetch(`${url}${params ? `?${params}` : ""}`, config);
 

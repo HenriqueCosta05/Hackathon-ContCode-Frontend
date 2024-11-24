@@ -3,6 +3,9 @@
 import { useState } from "react";
 import InputField from "@/components/form/input-field"
 import Button from "@/components/form/button";
+import { toast, ToastContainer } from "react-toastify";
+import { API_URL } from "@/constants";
+import { useFetch } from "@/hooks";
 
 interface FormData {
   email: string;
@@ -15,6 +18,21 @@ const Register: React.FC = () => {
     password: "",
   });
 
+  const { create, loading, error } = useFetch<FormData>({
+    url: `${API_URL}/login`,
+  });
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await create(formData);
+      toast.success("Usuário autenticado com sucesso!");
+      setFormData({ email: "", password: "" });
+    } catch (error) {
+      toast.error("Credenciais inválidas!");
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -22,6 +40,7 @@ const Register: React.FC = () => {
       [name]: value,
     }));
   };
+  
 
   return (
     <main className="flex flex-col w-full h-screen justify-center items-center">
@@ -56,8 +75,8 @@ const Register: React.FC = () => {
 
         <div className="space-y-4 flex w-full flex-wrap">
           <Button
-            text="Cadastrar"
-            href="/"
+            text="Entrar"
+            onClick={handleRegister}
             className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
           />
           <Button
@@ -67,6 +86,7 @@ const Register: React.FC = () => {
           />
         </div>
       </form>
+      <ToastContainer/>
     </main>
   );
 };

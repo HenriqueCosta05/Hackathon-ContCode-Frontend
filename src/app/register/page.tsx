@@ -1,8 +1,11 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import InputField from "@/components/form/input-field"
+import InputField from "@/components/form/input-field";
 import Button from "@/components/form/button";
+import { toast, ToastContainer } from "react-toastify";
+import { useFetch } from "@/hooks";
+import { API_URL } from "@/constants";
 
 interface FormData {
   name: string;
@@ -17,12 +20,27 @@ const Register: React.FC = () => {
     password: "",
   });
 
+  const { create, loading, error } = useFetch<FormData>({
+    url: `${API_URL}/user`,
+  });
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault(); 
+    try {
+      const response = await create(formData);
+      toast.success("Usuário cadastrado com sucesso!");
+      setFormData({ name: "", email: "", password: "" });
+    } catch (error) {
+      toast.error("Erro ao cadastrar usuário!");
+    }
   };
 
   return (
@@ -33,7 +51,10 @@ const Register: React.FC = () => {
         impedit atque suscipit sequi sed nemo eaque esse.
       </p>
 
-      <form className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12">
+      <form
+        onSubmit={handleRegister} 
+        className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12"
+      >
         <InputField
           type="text"
           label="Nome:"
@@ -69,9 +90,11 @@ const Register: React.FC = () => {
 
         <div className="space-y-4 flex w-full flex-wrap">
           <Button
-            text="Cadastrar"
-            href="/"
+            type="submit"
+            onClick={handleRegister}
+            text={loading ? "Cadastrando..." : "Cadastrar"}
             className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
+            disabled={loading}
           />
           <Button
             text="Voltar ao início"
@@ -80,6 +103,7 @@ const Register: React.FC = () => {
           />
         </div>
       </form>
+      <ToastContainer/>
     </main>
   );
 };
