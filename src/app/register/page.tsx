@@ -33,13 +33,13 @@ const Register: React.FC = () => {
   };
 
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const response = await create(formData);
       toast.success("Usuário cadastrado com sucesso!");
       setFormData({ name: "", email: "", password: "" });
     } catch (error) {
-      toast.error("Erro ao cadastrar usuário!");
+      toast.error("Erro ao cadastrar usuário! Tente novamente com outro e-mail.");
     }
   };
 
@@ -51,7 +51,7 @@ const Register: React.FC = () => {
       </p>
 
       <form
-        onSubmit={handleRegister} 
+        onSubmit={handleRegister}
         className="flex flex-col space-y-5 pt-5 items-center border-2 border-primary p-4 w-10/12 rounded-md my-4 lg:w-6/12"
       >
         <InputField
@@ -102,7 +102,7 @@ const Register: React.FC = () => {
           />
         </div>
       </form>
-      <ToastContainer/>
+      <ToastContainer />
     </main>
   );
 };

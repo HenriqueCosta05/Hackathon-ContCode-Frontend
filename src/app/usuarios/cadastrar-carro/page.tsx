@@ -3,26 +3,44 @@
 import InputField from "@/components/form/input-field";
 import Button from "@/components/form/button";
 import { useState } from "react";
+import { useFetch } from "@/hooks";
+import { API_URL } from "@/constants";
+import { toast, ToastContainer } from "react-toastify";
 
 
 interface FormData {
-    placa: string;
-    marca: string;
-    modelo: string;
-    ano: string;
+    plate: string;
+    brand: string;
+    model: string;
+    year: string;
 }
 
 const Register: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        placa: "",
-        marca: "",
-        modelo: "",
-        ano: "",
+        plate: "",
+        brand: "",
+        model: "",
+        year: "",
     });
+
+    const { create, loading, error } = useFetch<FormData>({
+        url: `${API_URL}/car`,
+    });
+
+    const handleCarRegister = async (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log(formData);
+        try {
+            const response = await create(formData);
+            toast.success("Veículo cadastrado com sucesso!");
+        } catch (error) {
+            toast.error("Erro ao cadastrar veículo!");
+        }
+    }
 
     const [currentStep, setCurrentStep] = useState<number>(1);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
@@ -52,9 +70,9 @@ const Register: React.FC = () => {
                         label="Placa:"
                         placeholder="Digite a placa do seu veículo..."
                         required={true}
-                        value={formData.placa}
+                        value={formData.plate}
                         onChange={handleInputChange}
-                        name="placa"
+                        name="plate"
                         className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                     />
                 )}
@@ -67,9 +85,9 @@ const Register: React.FC = () => {
                             label="Marca:"
                             placeholder="Digite a marca de seu veículo..."
                             required={true}
-                            value={formData.marca}
+                            value={formData.brand}
                             onChange={handleInputChange}
-                            name="marca"
+                            name="brand"
                             className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                         <InputField
@@ -77,19 +95,19 @@ const Register: React.FC = () => {
                             label="Modelo:"
                             placeholder="Digite o modelo de seu veículo..."
                             required={true}
-                            value={formData.modelo}
+                            value={formData.model}
                             onChange={handleInputChange}
-                            name="modelo"
+                            name="model"
                             className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                         <InputField
-                            type="string"
+                            type="text"
                             label="Ano:"
                             placeholder="Digite o ano de seu veículo..."
                             required={true}
-                            value={formData.ano}
+                            value={formData.year}
                             onChange={handleInputChange}
-                            name="ano"
+                            name="year"
                             className="bg-transparent rounded-md placeholder-black py-3 px-3 border focus:border-2 border-primary focus:border-primary active:border-primary outline-none w-full"
                         />
                     </>
@@ -107,7 +125,7 @@ const Register: React.FC = () => {
                             />
                         )}
 
-                        {currentStep < 3 ? (
+                        {currentStep < 2 ? (
                             <Button
                                 text="Próximo"
                                 href="#"
@@ -117,13 +135,14 @@ const Register: React.FC = () => {
                         ) : (
                             <Button
                                 text="Cadastrar"
-                                href="#"
+                                onClick={handleCarRegister}
                                 className="bg-primary text-white hover:scale-[1.05] hover:transition-[.3s]"
                             />
                         )}
                     </div>
                 </div>
             </form>
+            <ToastContainer />
         </main>
     );
 };

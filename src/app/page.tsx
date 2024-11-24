@@ -20,7 +20,7 @@ export default function Page() {
         </Link>
       </div>
 
-      <CardComponent user="Henrique Costa" model="Gol" year={2021} brand="Volkswagen" plate="ABC-1234" date={new Date()} />
+      <CardComponent title="Gol" tag="FOU-1927" date={new Date()} action={{ text: "Ver mais", href: "/" }} bullets={[{ key: "Ano", value: "2009" }, { key: "Marca", value: "Fiat" } ]} />
     </main>
   );
 }
