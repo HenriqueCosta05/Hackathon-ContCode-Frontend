@@ -1,3 +1,4 @@
+import { CardComponent } from "@/components";
 import Link from "next/link";
 
 export default function Page() {
@@ -19,6 +20,7 @@ export default function Page() {
         </Link>
       </div>
 
+      <CardComponent user="Henrique Costa" model="Gol" year={2021} brand="Volkswagen" plate="ABC-1234" date={new Date()} />
     </main>
   );
 }

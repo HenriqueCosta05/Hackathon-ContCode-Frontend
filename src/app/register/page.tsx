@@ -47,8 +47,7 @@ const Register: React.FC = () => {
     <main className="flex flex-col w-full h-screen justify-center items-center">
       <h1 className="text-4xl font-bold">Cadastre-se</h1>
       <p className="pt-2 text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ab
-        impedit atque suscipit sequi sed nemo eaque esse.
+        Cadastre-se em nossa plataforma para ter acesso a todos os recursos e funcionalidades.
       </p>
 
       <form

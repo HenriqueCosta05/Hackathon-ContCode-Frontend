@@ -1,7 +1,9 @@
 export interface Carro {
     id?: string;
-    modelo: string;
-    ano: number;
-    marca: string;
-    placa: string;
+    model: string;
+    year: number;
+    brand: string;
+    plate: string;
+    date?: Date;
+    user?: string;
 }
