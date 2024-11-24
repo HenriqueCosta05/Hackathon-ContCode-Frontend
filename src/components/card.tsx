@@ -1,4 +1,3 @@
-import { Carro } from '@/types/carro';
 import Link from 'next/link';
 import React from 'react';
 
